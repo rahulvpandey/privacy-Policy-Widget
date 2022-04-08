@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?><unload unload_date="2022-04-08 06:51:51">
+<sys_remote_update_set action="INSERT_OR_UPDATE">
+<application display_value="Global">global</application>
+<application_name>Global</application_name>
+<application_scope>global</application_scope>
+<application_version/>
+<collisions/>
+<commit_date/>
+<deleted/>
+<description/>
+<inserted/>
+<name>Privacy Policies</name>
+<origin_sys_id/>
+<parent display_value=""/>
+<release_date/>
+<remote_base_update_set display_value=""/>
+<remote_parent_id/>
+<remote_sys_id>9d2bf0a807f20110850af61d7c1ed0d7</remote_sys_id>
+<state>loaded</state>
+<summary/>
+<sys_class_name>sys_remote_update_set</sys_class_name>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2022-04-08 06:51:50</sys_created_on>
+<sys_id>8a74492807360110850af61d7c1ed050</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2022-04-08 06:51:50</sys_updated_on>
+<update_set display_value=""/>
+<update_source display_value=""/>
+<updated/>
+</sys_remote_update_set>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_properties_529b30e807f20110850af61d7c1ed0ad</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties"><sys_properties action="INSERT_OR_UPDATE"><choices/><description/><ignore_cache>true</ignore_cache><is_private>false</is_private><name>privacy_policy_announcement</name><read_roles/><suffix/><sys_class_name>sys_properties</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2022-04-08 06:14:07</sys_created_on><sys_id>529b30e807f20110850af61d7c1ed0ad</sys_id><sys_mod_count>0</sys_mod_count><sys_name>privacy_policy_announcement</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_properties_529b30e807f20110850af61d7c1ed0ad</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2022-04-08 06:14:07</sys_updated_on><type>string</type><value>8203f0e807b20110850af61d7c1ed00e</value><write_roles/></sys_properties><sys_translated_text action="delete_multiple" query="documentkey=529b30e807f20110850af61d7c1ed0ad"/></record_update>]]></payload>
+<payload_hash>1326872182</payload_hash>
+<remote_update_set display_value="Privacy Policies">8a74492807360110850af61d7c1ed050</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2022-04-08 06:51:50</sys_created_on>
+<sys_id>0274492807360110850af61d7c1ed051</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>18007cefe520000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2022-04-08 06:51:50</sys_updated_on>
+<table/>
+<target_name>privacy_policy_announcement</target_name>
+<type>System Property</type>
+<update_domain>global</update_domain>
+<update_guid>eddbf4e8c8f20110065d46aa0ee75e09</update_guid>
+<update_guid_history>eddbf4e8c8f20110065d46aa0ee75e09:1326872182</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sp_widget_c64bb4a807f20110850af61d7c1ed0aa</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sp_widget"&gt;&lt;sp_widget action="INSERT_OR_UPDATE"&gt;&lt;category&gt;custom&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[api.controller=function($scope, spUtil) {
+  /* widget controller */
+  var c = this;
+	
+	$scope.dismissed = function(){
+		$scope.data.dismissed = true;
+		$scope.server.update().then(function(response){
+				$scope.server.refresh()
+		});
+	}
+	
+};]]&gt;&lt;/client_script&gt;&lt;controller_as&gt;c&lt;/controller_as&gt;&lt;css/&gt;&lt;data_table&gt;sp_instance&lt;/data_table&gt;&lt;demo_data/&gt;&lt;description/&gt;&lt;docs/&gt;&lt;field_list/&gt;&lt;has_preview&gt;true&lt;/has_preview&gt;&lt;id&gt;privacy_policy&lt;/id&gt;&lt;internal&gt;false&lt;/internal&gt;&lt;link&gt;&lt;![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]&gt;&lt;/link&gt;&lt;name&gt;Privacy Policy&lt;/name&gt;&lt;option_schema/&gt;&lt;public&gt;false&lt;/public&gt;&lt;roles/&gt;&lt;script&gt;&lt;![CDATA[(function() {
+data.announcement = false;
+	var defaultAnnouncement = gs.getProperty("privacy_policy_announcement");
+		if(input &amp;&amp; input.dismissed){
+		dismiss(defaultAnnouncement);
+			data.dismissed = false;
+		}
+var getAnnouncement = new GlideRecord("announcement");
+if(getAnnouncement.get(defaultAnnouncement))
+	{
+		data.announcement = !isValid(defaultAnnouncement);
+
+	}
+
+})();
+
+function dismiss(defaultAnnouncement){
+	var dismissInsert = new GlideRecord("m2m_dismissed_announcement");
+	dismissInsert.initialize();
+	dismissInsert.announcement = defaultAnnouncement;
+	dismissInsert.sys_user = gs.getUserID();
+	dismissInsert.insert();
+}
+function isValid(defaultAnnouncement){
+	var checkDismissed = new GlideRecord("m2m_dismissed_announcement");
+	checkDismissed.addEncodedQuery("announcement="+defaultAnnouncement+"^sys_user="+gs.getUserID())
+	checkDismissed.query();
+	return checkDismissed.hasNext();
+}]]&gt;&lt;/script&gt;&lt;servicenow&gt;false&lt;/servicenow&gt;&lt;sys_class_name&gt;sp_widget&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-04-08 06:14:38&lt;/sys_created_on&gt;&lt;sys_id&gt;c64bb4a807f20110850af61d7c1ed0aa&lt;/sys_id&gt;&lt;sys_mod_count&gt;17&lt;/sys_mod_count&gt;&lt;sys_name&gt;Privacy Policy&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_widget_c64bb4a807f20110850af61d7c1ed0aa&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-04-08 06:45:26&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[
+&lt;div ng-if="data.announcement"&gt;
+   &lt;div class="alert alert-info"&gt;
+        &lt;a href="javascript:void(0)" class="btn btn-xs btn-primary pull-right" ng-click="dismissed()"&gt;Ok&lt;/a&gt;
+        We use cookies to improve user experience and analyze website traffic.
+    &lt;/div&gt;
+]]&gt;&lt;/template&gt;&lt;/sp_widget&gt;&lt;/record_update&gt;</payload>
+<payload_hash>-1065321806</payload_hash>
+<remote_update_set display_value="Privacy Policies">8a74492807360110850af61d7c1ed050</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2022-04-08 06:51:50</sys_created_on>
+<sys_id>4e74492807360110850af61d7c1ed050</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>18007eba83e0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2022-04-08 06:51:50</sys_updated_on>
+<table/>
+<target_name>Privacy Policy</target_name>
+<type>Widget</type>
+<update_domain>global</update_domain>
+<update_guid>c403c12831360110d9d113df94b3e4e1</update_guid>
+<update_guid_history>c403c12831360110d9d113df94b3e4e1:-1065321806,93b28da4e6360110d1cbc6e38f3567db:-1581129246,34a249e4443601109ce7c8ce4afe589f:-1024326212,5f9209e4883601101902e0f89d31e9ca:1015984522,684245649236011054127799ad0b6d81:-1065321806,e7220da4863601105cc6136ff75846a7:2030717484,9c22c9a418360110d1a0472d2e1da030:1327496192,ba218d2474360110e7a7487db5210d90:1084254736,2201c1a039360110d47904d50297be14:-1508969247,b7a001240a3601104c7799d94a0221f9:-2084122069,19aff0a028360110e3f5d0a31078cd09:-34283691,e62f74609a360110532e4ef65b9a7a8b:-1869076590,a3fe3820b236011063ad388152505e67:-892357826,ffbe3420663601100620a95ddbddb3a4:2062295613,b6ae3cec21f201108a774fe351cfd5f1:375443596,1a2e34ecdaf20110597ec9a149287bff:1535937351,b70e38acd8f201106b1cedefb1f9889a:193704912,09fbf0e4f6f201107d446ca527199cc7:1034113548</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+</unload>
